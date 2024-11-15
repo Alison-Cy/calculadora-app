@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:math'; // Importamos la librería de matemáticas para evaluar expresiones
+import 'dart:math'; 
 
 void main() => runApp(MyApp());
 
@@ -22,7 +22,6 @@ class _CalculatorState extends State<Calculator> {
   String _output = "0";
   String _input = "";
 
-  // Función para actualizar la entrada
   void _updateInput(String value) {
     setState(() {
       if (_input == "0") {
@@ -33,7 +32,7 @@ class _CalculatorState extends State<Calculator> {
     });
   }
 
-  // Función para calcular el resultado
+
   void _calculate() {
     try {
       final result = _evaluateExpression(_input);
@@ -47,10 +46,7 @@ class _CalculatorState extends State<Calculator> {
       });
     }
   }
-
-  // Función para evaluar la expresión ingresada
   double _evaluateExpression(String expression) {
-    // Evaluamos la expresión utilizando la librería dart:math
     try {
       final result = _evaluateSimpleExpression(expression);
       return result;
@@ -59,15 +55,12 @@ class _CalculatorState extends State<Calculator> {
     }
   }
 
-  // Función para evaluar operaciones matemáticas básicas
   double _evaluateSimpleExpression(String expression) {
-    // Reemplazamos los operadores y evaluamos la expresión matemática
     expression = expression.replaceAll('×', '*').replaceAll('÷', '/');
     final result = _parseMathExpression(expression);
     return result;
   }
 
-  // Función para parsear la expresión y evaluar el resultado
   double _parseMathExpression(String expression) {
     final regExp = RegExp(r"(\d+)([\+\-\*/])(\d+)");
     final match = regExp.firstMatch(expression);
@@ -91,8 +84,6 @@ class _CalculatorState extends State<Calculator> {
     }
     return 0.0;
   }
-
-  // Función para limpiar la entrada
   void _clear() {
     setState(() {
       _input = "";
@@ -100,7 +91,6 @@ class _CalculatorState extends State<Calculator> {
     });
   }
 
-  // Función para borrar el último carácter
   void _backspace() {
     setState(() {
       if (_input.isNotEmpty) {
@@ -188,7 +178,6 @@ class _CalculatorState extends State<Calculator> {
     );
   }
 
-  // Obtener el label de cada botón
   String _getButtonLabel(int index) {
     if (index < 9) {
       return (index + 1).toString();
@@ -203,11 +192,11 @@ class _CalculatorState extends State<Calculator> {
     } else if (index == 13) {
       return "/";
     } else if (index == 14) {
-      return "C"; // Limpiar
+      return "C"; 
     } else if (index == 15) {
-      return "←"; // Borrar un carácter
+      return "←"; 
     } else if (index == 16) {
-      return "="; // Calcular
+      return "="; 
     } else {
       return "";
     }
